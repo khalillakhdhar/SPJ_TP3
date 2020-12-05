@@ -20,18 +20,24 @@ public class HomeController {
 	public ModelAndView test(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
+	
+	
+	
+	
 	@RequestMapping(value="/calcule" , method=RequestMethod.POST)
 	public String display(HttpServletRequest req,Model m)
 	{
 	//read the provided form data
-
-String s=req.getParameter("salaire");
-int sc=Integer.parseInt(s);
-Calcule cl=new Calcule(sc);
-String message=cl.bilan();
-m.addAttribute("salaire", s);
-m.addAttribute("bilan",message);
-	return "resultat";
+		String s=req.getParameter("salaire");
+		int sc=Integer.parseInt(s);
+		Calcule cl=new Calcule(sc);
+		String message=cl.bilan();
+		m.addAttribute("salaire", s);
+		m.addAttribute("bilan",message);
+		return "resultat";
 	
 	}
 }
+
+
+
